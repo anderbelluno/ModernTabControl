@@ -5,9 +5,8 @@ unit ModernTabControl;
 interface
 
 uses
-  Classes, SysUtils, Controls, Graphics, Forms, LCLType, ExtCtrls, Types,
-  LResources, LCLIntf, ImgList, Menus, Math
-  {$IFDEF WINDOWS}, Windows{$ENDIF};
+  {$IFDEF WINDOWS}Windows,{$ENDIF}Classes, SysUtils, Controls, Graphics, Forms, LCLType, ExtCtrls, Types,
+  LResources, LCLIntf, ImgList, Menus, Math;
 
 type
   TTabCloseEvent    = procedure(Sender: TObject; TabIndex: Integer; var CanClose: Boolean) of object;
