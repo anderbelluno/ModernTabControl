@@ -1,0 +1,90 @@
+object Form1: TForm1
+  Left = 342
+  Height = 624
+  Top = 31
+  Width = 1174
+  Caption = 'Form1'
+  ClientHeight = 624
+  ClientWidth = 1174
+  LCLVersion = '4.5.0.0'
+  object ModernTabControl1: TModernTabControl
+    Left = 0
+    Height = 36
+    Top = 0
+    Width = 1174
+    NoteBook = Notebook1
+    TabItems = <    
+      item
+        Caption = 'Page1'
+        CustomCaption = 'My Custom Caption can change'
+        TabColor = clWindow
+        TabColorActive = clBlue
+        TabColorHover = clLime
+        ImageIndex = 0
+      end    
+      item
+        Caption = 'Page2'
+      end    
+      item
+        Caption = 'Page3'
+      end    
+      item
+        Caption = 'Page4'
+      end    
+      item
+        Caption = 'Page5'
+      end>
+    Images = ImageList1
+    ActiveTab = 0
+    SepWidth = 6
+    TabShape = mtsRounded
+    ShowClose = mscActiveAndHover
+    CornerRadius = 8
+    PinnedText = '● '
+    ColorBackground = clMenuText
+    ColorTabInactive = clHighlight
+    ColorTabHover = 3684408
+    ColorTabActive = 4342338
+    ColorAccent = 13594151
+    ColorTextInactive = clInfoText
+    ColorTextActive = clBtnText
+    ColorClose = 7829367
+    ColorCloseHover = 22015
+    ColorSeparator = 4473924
+    ColorModifiedDot = 4235519
+    Align = alTop
+  end
+  object Notebook1: TNotebook
+    Left = 0
+    Height = 588
+    Top = 36
+    Width = 1174
+    PageIndex = 0
+    Align = alClient
+    TabOrder = 1
+    object Page1: TPage
+    end
+    object Page2: TPage
+    end
+    object Page3: TPage
+    end
+    object Page4: TPage
+    end
+    object Page5: TPage
+    end
+  end
+  object ImageList1: TImageList
+    Left = 658
+    Top = 89
+    Bitmap = {
+      4C7A010000001000000010000000D40000000000000078DA6360A01A08056259
+      285B0188CB80783A102F04E21A20D626A07F3210BB01F102203E00C4F1406C09
+      C446409C0A155B01C48278F43F03E2243C76C400F12120E6C6225702C43780F8
+      0C10AFC663462C10CFA330AC0E02B10A05FA9381B812896F06C46C24E8B78486
+      330C2C848A110B40769922F1AB09843B21A004C487290CD379D034830B4C84C6
+      ED13209E8F459E1B9A36406630E230231D886F01F1361CF20240BC14EA974C20
+      B600625B68FA3D0AC48B80580B8F7E18D004E20A209E0B7537286D4A43E53880
+      389A5A991600A62A22FC
+    }
+  end
+end

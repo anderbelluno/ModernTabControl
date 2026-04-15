@@ -83,3 +83,8 @@ modules/
 *.bak
 *.compiled
 *.ppu
+sample/project1.res
+sample/project1.lps
+sample/lib/x86_64-linux/project1.res
+*.or
+sample/lib/x86_64-linux/unit1.lfm
