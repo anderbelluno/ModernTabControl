@@ -1,115 +1,115 @@
 # ModernTabControl
 
-Um componente de abas totalmente customizável para **Lazarus / Free Pascal**, com visual moderno, suporte a temas escuros e integração nativa com `TNotebook`.
+A fully customizable tab component for **Lazarus / Free Pascal**, with a modern look, dark theme support, and native integration with `TNotebook`.
 
 ---
 
-## Visão geral
+## Overview
 
-`TModernTabControl` é um substituto direto ao `TPageControl` padrão do LCL, desenhado do zero com renderização própria via `TCustomControl`. Cada detalhe visual — cores, separadores, barra de acento, botão de fechar — é configurável por propriedades `published`, sem necessidade de subclasses ou hacks.
+`TModernTabControl` is a drop-in replacement for the standard LCL `TPageControl`, built from scratch with its own rendering via `TCustomControl`. Every visual detail — colors, separators, accent bar, close button — is configurable through `published` properties, with no need for subclasses or hacks.
 
 ---
 
-## Funcionalidades
+## Features
 
-| Recurso | Detalhe |
+| Feature | Details |
 |---|---|
-| **Paleta de cores completa** | 10 propriedades de cor expostas no Object Inspector |
-| **Barra de acento** | Indicador colorido na aba ativa |
-| **Botão fechar por aba** | Com highlight ao passar o mouse |
-| **Drag & drop** | Reordene abas arrastando |
-| **Scroll horizontal** | Botões `<` `>` aparecem automaticamente quando necessário |
-| **Tooltips por aba** | `THintWindow` nativo, definido por aba via `SetTabHint` |
-| **Integração com TNotebook** | Sincronização automática de páginas e índice ativo |
-| **Separadores configuráveis** | Espessura e cor do separador entre abas |
+| **Full color palette** | 10 color properties exposed in the Object Inspector |
+| **Accent bar** | Colored indicator on the active tab |
+| **Per-tab close button** | With highlight on mouse hover |
+| **Drag & drop** | Reorder tabs by dragging |
+| **Horizontal scroll** | `<` `>` buttons appear automatically when needed |
+| **Per-tab tooltips** | Native `THintWindow`, set per tab via `SetTabHint` |
+| **TNotebook integration** | Automatic page and active index synchronization |
+| **Configurable separators** | Separator thickness and color between tabs |
 
 ---
 
-## Propriedades
+## Properties
 
-### Comportamento
+### Behavior
 
-| Propriedade | Tipo | Padrão | Descrição |
+| Property | Type | Default | Description |
 |---|---|---|---|
-| `NoteBook` | `TNotebook` | `nil` | Notebook sincronizado com as abas |
-| `ActiveTab` | `Integer` | `-1` | Índice da aba ativa |
-| `TabHeight` | `Integer` | `36` | Altura da barra de abas em pixels |
-| `SepWidth` | `Integer` | `1` | Largura do separador entre abas (0 = sem separador) |
+| `NoteBook` | `TNotebook` | `nil` | Notebook synchronized with the tabs |
+| `ActiveTab` | `Integer` | `-1` | Index of the active tab |
+| `TabHeight` | `Integer` | `36` | Tab bar height in pixels |
+| `SepWidth` | `Integer` | `1` | Separator width between tabs (0 = no separator) |
 
-### Cores
+### Colors
 
-| Propriedade | Padrão (Dark) | Descrição |
+| Property | Default (Dark) | Description |
 |---|---|---|
-| `ColorBackground` | `#202020` | Fundo da barra de abas |
-| `ColorTabInactive` | `#2D2D2D` | Fundo de aba inativa |
-| `ColorTabHover` | `#383838` | Fundo de aba com hover |
-| `ColorTabActive` | `#424242` | Fundo de aba ativa |
-| `ColorAccent` | `#CF6E27` | Barra de acento na aba ativa |
-| `ColorTextInactive` | `#AAAAAA` | Texto de aba inativa |
-| `ColorTextActive` | `#FFFFFF` | Texto de aba ativa |
-| `ColorClose` | `#777777` | Ícone X da aba ativa |
-| `ColorCloseHover` | `#0055FF` | Ícone X com hover |
-| `ColorSeparator` | `#444444` | Separador entre abas |
+| `ColorBackground` | `#202020` | Tab bar background |
+| `ColorTabInactive` | `#2D2D2D` | Inactive tab background |
+| `ColorTabHover` | `#383838` | Hovered tab background |
+| `ColorTabActive` | `#424242` | Active tab background |
+| `ColorAccent` | `#CF6E27` | Accent bar on the active tab |
+| `ColorTextInactive` | `#AAAAAA` | Inactive tab text |
+| `ColorTextActive` | `#FFFFFF` | Active tab text |
+| `ColorClose` | `#777777` | Close (X) icon on the active tab |
+| `ColorCloseHover` | `#0055FF` | Close (X) icon on hover |
+| `ColorSeparator` | `#444444` | Separator between tabs |
 
 ---
 
-## Eventos
+## Events
 
-| Evento | Assinatura | Descrição |
+| Event | Signature | Description |
 |---|---|---|
-| `OnChange` | `TNotifyEvent` | Disparado ao trocar a aba ativa |
-| `OnCloseTab` | `(Sender; TabIndex; var CanClose)` | Permite cancelar o fechamento de uma aba |
-| `OnMoveTab` | `(Sender; OldIndex, NewIndex)` | Disparado ao reordenar abas por drag |
-| `OnAddTab` | `TNotifyEvent` | Disparado ao clicar no botão `+` |
+| `OnChange` | `TNotifyEvent` | Fired when the active tab changes |
+| `OnCloseTab` | `(Sender; TabIndex; var CanClose)` | Allows canceling a tab close |
+| `OnMoveTab` | `(Sender; OldIndex, NewIndex)` | Fired when tabs are reordered via drag |
+| `OnAddTab` | `TNotifyEvent` | Fired when the `+` button is clicked |
 
 ---
 
-## API pública
+## Public API
 
 ```pascal
-// Adiciona uma aba (retorna o índice)
+// Adds a tab (returns its index)
 function AddTab(const ACaption: string; const AHint: string = ''): Integer;
 
-// Remove a aba no índice especificado
+// Removes the tab at the specified index
 procedure DeleteTab(Index: Integer);
 
-// Remove todas as abas
+// Removes all tabs
 procedure Clear;
 
-// Define o tooltip de uma aba específica
+// Sets the tooltip for a specific tab
 procedure SetTabHint(Index: Integer; const AHint: string);
 
-// Acesso às abas individuais
+// Access to individual tabs
 property Tabs[Index: Integer]: TModernTab;  // read-only
 property TabCount: Integer;                  // read-only
 ```
 
 ---
 
-## Instalação
+## Installation
 
-1. Abra o Lazarus e vá em **Package → Open Package File (.lpk)**
-2. Selecione `ModernTabControl/moderncontrols.lpk`
-3. Clique em **Compile** e depois em **Use → Install**
-4. Confirme a recompilação do IDE
-5. O componente aparecerá na paleta **Modern**
+1. Open Lazarus and go to **Package → Open Package File (.lpk)**
+2. Select `ModernTabControl/moderncontrols.lpk`
+3. Click **Compile** and then **Use → Install**
+4. Confirm the IDE recompilation
+5. The component will appear in the **Modern** palette
 
 ---
 
-## Uso básico
+## Basic Usage
 
-1. Adicione um `TNotebook` ao formulário
-2. Adicione um `TModernTabControl` e defina `Align = alTop`
-3. Aponte a propriedade `NoteBook` para o `TNotebook`
-4. As abas são sincronizadas automaticamente com as páginas do Notebook
+1. Add a `TNotebook` to your form
+2. Add a `TModernTabControl` and set `Align = alTop`
+3. Point the `NoteBook` property to the `TNotebook`
+4. Tabs are automatically synchronized with the Notebook pages
 
 ```pascal
-// Adicionando abas em runtime
-ModernTabControl1.AddTab('Geral');
-ModernTabControl1.AddTab('Configurações', 'Ajuste as preferências do sistema');
-ModernTabControl1.AddTab('Sobre');
+// Adding tabs at runtime
+ModernTabControl1.AddTab('General');
+ModernTabControl1.AddTab('Settings', 'Adjust system preferences');
+ModernTabControl1.AddTab('About');
 
-// Tema claro em runtime
+// Light theme at runtime
 ModernTabControl1.ColorBackground   := clWhite;
 ModernTabControl1.ColorTabInactive  := $00F0F0F0;
 ModernTabControl1.ColorTabActive    := clWhite;
@@ -120,14 +120,14 @@ ModernTabControl1.ColorAccent       := clBlue;
 
 ---
 
-## Requisitos
+## Requirements
 
-- Lazarus 2.x ou superior
-- Free Pascal 3.x ou superior
-- Plataformas: Windows, Linux, macOS (via LCL)
+- Lazarus 2.x or higher
+- Free Pascal 3.x or higher
+- Platforms: Windows, Linux, macOS (via LCL)
 
 ---
 
-## Licença
+## License
 
-MIT — use, modifique e distribua livremente.
+MIT — free to use, modify, and distribute.
